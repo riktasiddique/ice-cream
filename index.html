@@ -35,20 +35,7 @@
       <div class="mainBody react" id="app">
         <div class="container react" id="iceCreamBuilder">
           <!-- icecream start -->
-          <div>
-            <div class="icecream react" id="icecream">
-              <p class="cone"></p>
-              <!-- <p>Please start adding scoops</p> -->
-              <div class="scoop" v-for="cartItem in cart" :class="cartItem.name.toLowerCase()"></div>
-              <!-- <div class="scoop vanilla"></div>
-              <div class="scoop orange"></div>
-              <div class="scoop strawberry"></div>
-              <div class="scoop chocolate"></div>
-              <div class="scoop vanilla react" id="scoop"></div>
-              <div class="scoop lemon"></div> -->
-              <div class="cherry"></div>
-            </div>
-          </div>
+          <ice-cream :cart="cart"></ice-cream>
           <!-- ice cream end -->
 
           <!-- builder start -->
@@ -221,6 +208,7 @@
     </script>
     <!-- Custom Js -->
     <script src="main.js"></script>
+    <script src="./components/ice-cream.js"></script>
     <script>
         const mountedapp = app.mount('#app');
     </script>
