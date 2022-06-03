@@ -86,6 +86,7 @@ app.component("order-form", {
       }
       console.log(orderDetails);
       this.hideOrderForm();
+      this.$emit("cart-clear");
     }
 
   }

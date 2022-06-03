@@ -102,7 +102,7 @@
             </div>
 
             <!-- modal start -->
-              <order-form :cart="cart" v-if="showModal" @toggle-order-form="toggoleModal" :total="total"></order-form>
+              <order-form :cart="cart" v-if="showModal" @toggle-order-form="toggoleModal" :total="total" @cart-clear="clearCart"></order-form>
             <!-- modal end -->
           </div>
           <!-- builder end -->
