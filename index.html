@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles.css" />
     <!-- Vue.js CDN Link -->
     <script src="https://unpkg.com/vue@3"></script>
+    <!-- Front Awsome CND -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   </head>
 
   <body>
@@ -23,9 +25,11 @@
             <img class="logo" src="images/logo.svg" alt="Logo" />
           </div>
           <div class="textRight">
-            <img src="images/react.svg" alt="React" class="reactLogo" /><strong
+            <!-- <img src="images/react.svg" alt="React" class="reactLogo" /><strong
               >React</strong
-            >
+            > -->
+            <img src="images/png-transparent-vue-js-hd-logo-thumbnail.png" alt="Vue" class="reactLogo" /><strong
+              >Vue</strong>
           </div>
         </div>
       </header>
@@ -49,7 +53,7 @@
                   <!-- item start -->
                   <li class="react item" id="item" v-for="variant in variants">
                     <span>{{variant.name}}</span>
-                    <span class="quantity">1</span>
+                    <!-- <span class="quantity">1</span> -->
                     <div class="right">
                       <!-- <button type="button" class="plus rounded" v-on:click=addToCart(variant.id)>+</button> -->
                       <button type="button" class="plus rounded" @click=addToCart(variant.id)>+</button>
@@ -91,56 +95,14 @@
                 <div>{{ total }}Tk</div>
               </div>
               <!-- total price end -->
-              <button type="button" onclick="next()" class="order rounded">
-                Add to Cart
+              <button type="button" class="minus rounded" @click="clearCart()" v-if="cart.length > 0">Clr</button>
+              <button type="button" onclick="next()" class="order rounded" @click="toggoleModal">
+                Process
               </button>
             </div>
 
             <!-- modal start -->
-            <div class="react" id="modal">
-              <div class="backdrop" onclick="removeModal()"></div>
-              <div class="modalBody">
-                <div class="formContainer react" id="orderForm">
-                  <h1>Complete the form below and hit submit</h1>
-                  <form class="orderForm">
-                    <ul>
-                      <li>
-                        <input
-                          type="text"
-                          name="name"
-                          class="fieldStyle fieldSplit alignLeft"
-                          placeholder="Name"
-                        />
-                        <input
-                          type="text"
-                          name="phone"
-                          class="fieldStyle fieldSplit alignRight"
-                          placeholder="Phone no."
-                        />
-                      </li>
-                      <li>
-                        <input
-                          type="text"
-                          name="email"
-                          class="fieldStyle fieldFull"
-                          placeholder="Email"
-                        />
-                      </li>
-                      <li>
-                        <textarea
-                          name="address"
-                          class="fieldStyle"
-                          placeholder="Address"
-                        ></textarea>
-                      </li>
-                      <li>
-                        <input type="submit" value="Submit Order" />
-                      </li>
-                    </ul>
-                  </form>
-                </div>
-              </div>
-            </div>
+              <order-form :cart="cart" v-if="showModal" @toggle-order-form="toggoleModal"></order-form>
             <!-- modal end -->
           </div>
           <!-- builder end -->
@@ -152,14 +114,14 @@
       <footer>
         <div class="container react" id="footer">
           <div>
-            Copyright &copy;2020.
+            Copyright &copy;2022.
           </div>
           <div class="textRight">
-            Built with <span class="red">&hearts;</span> by
+            Built with <span class="red">&hearts;</span>
             <a
-              href="https://reactjs.org/docs/create-a-new-react-app.html"
+              href="https://vuejs.org/guide/introduction.html"
               target="_blank"
-              >Create React App</a
+              >Vue.js App</a
             >
           </div>
         </div>
@@ -170,8 +132,8 @@
     <script>
       // modal control
       var next = () => {
-        document.querySelector(".backdrop").style.display = "block";
-        document.querySelector(".modalBody").style.display = "block";
+        // document.querySelector(".backdrop").style.display = "block";
+        // document.querySelector(".modalBody").style.display = "block";
       };
       var removeModal = () => {
         document.querySelector(".backdrop").style.display = "none";
@@ -209,6 +171,7 @@
     <!-- Custom Js -->
     <script src="main.js"></script>
     <script src="./components/ice-cream.js"></script>
+    <script src="./components/order-form.js"></script>
     <script>
         const mountedapp = app.mount('#app');
     </script>

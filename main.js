@@ -9,7 +9,8 @@ const app = Vue.createApp({
         {id: 5, name: 'Chocolate', price: 300},
 
       ], 
-      cart: []
+      cart: [], 
+      showModal: false
     }
   },
   methods: {
@@ -20,11 +21,17 @@ const app = Vue.createApp({
     removeFromCart(varianId){
       let position = this.cart.findIndex(variant => variant.id === varianId);
       this.cart.splice(position, 1);
+    },
+    clearCart(){
+      this.cart = [];
+    },
+    toggoleModal(){
+      this.showModal = !this.showModal
     }
   },
   computed: {
     total(){
       return this.cart.reduce((total, variant) => total + variant.price, 0);
     }
-  }
+  },
 });
